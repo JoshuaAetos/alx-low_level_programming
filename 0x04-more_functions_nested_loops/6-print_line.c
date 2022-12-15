@@ -1,23 +1,26 @@
 #include "main.h"
 
 /**
- * more_numbers - nmbr fct
- *
- * Return: no return
- */
-
-void more_numbers(void)
+  * print_line - Draws a straight line according to parameter
+  * @n: The number of lines to draw
+  *
+  * Return: empty
+  */
+void print_line(int n)
 {
+	int x;
 
-int i, j;
-	for (i = 1; i <= 10; i++)
+	if (n <= 0)
 	{
-		for (j = 0; j < 15; j++)
+		_putchar('\n');
+	}
+	else
+	{
+		for (x = 0; x < n; x++)
 		{
-			if (j >= 10)
-			_putchar('1');
-			_putchar(j % 10 + '0');
+			_putchar(95);
 		}
-			_putchar('\n');
-		}
+
+		_putchar('\n');
+	}
 }

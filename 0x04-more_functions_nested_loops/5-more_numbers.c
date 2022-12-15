@@ -1,20 +1,26 @@
 #include "main.h"
 
 /**
- * print_most_numbers - prints
- *
- * Return: void
- */
-
-
-void print_most_numbers(void)
+  * more_numbers - Print 10 times the numbers since 0 up to 14
+  *
+  * Return: 10 times of the numbers since 0 up to 14
+  */
+void more_numbers(void)
 {
-	char c;
+	int x, y;
 
-	for (c = '0'; c <= '9'; c++)
+	for (x = 0; x < 10; x++)
 	{
-		if (!(c == '2' || c == '4'))
-			_putchar(c);
+		for (y = 0; y <= 14; y++)
+		{
+			if (y > 9)
+			{
+				_putchar((y / 10) + '0');
+			}
+
+			_putchar((y % 10) + '0');
+		}
+
+		_putchar('\n');
 	}
-	_putchar('\n');
 }
