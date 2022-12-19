@@ -1,25 +1,24 @@
 #include "main.h"
 
 /**
- * rev_string - Entry point
- * Desc: Entry
- *@s: pointer
- * Return: Always 0 (Success)
+ *puts2 - prints every other character in a string beginning with the first one
+ *
+ *@str: pointer that will store the string's location
+ *
+ *Return: nothing
  */
-void rev_string(char *s)
+void puts2(char *str)
 {
-	int i;
-	int j;
-	char k;
+	int cycle;
 
-	for (i = 0 ; s[i] != '\0' ; i++)
+	while (*str != 0)
 	{
+		if (cycle % 2 == 0)
+		{
+			_putchar(*str);
+		}
+		cycle++;
+		str++;
 	}
-	i--;
-	for (j = 0 ; j < i ; j++, i--)
-	{
-	k = *(s + i);
-	*(s + i) = *(s + j);
-	*(s + j) = k;
-	}
+	_putchar(10);
 }
