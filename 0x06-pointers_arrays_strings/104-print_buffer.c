@@ -1,104 +1,94 @@
-#include "main.h"                                                                                                                      
+#include "main.h"
 
-#include <stdio.h>                                                                                                                      
+#include <stdio.h>
 
-                                                                                                                                       
 
-/**                                                                                                                                    
+/**
 
- * print_buffer - Prints a buffer 10 bytes at a time, starting with                                                                    
+ * print_buffer - prints buffer
 
- *                the byte position, then showing the hex content,                                                                      
+ * @b: buffer
 
- *                then displaying printable charcaters.                                                                                
+ * @size: size
 
- * @b: The buffer to be printed.                                                                                                        
+ * Return: void
 
- * @size: The number of bytes to be printed from the buffer.                                                                            
+ */
 
- */                                                                                                                                    
 
-void print_buffer(char *b, int size)                                                                                                    
+void print_buffer(char *b, int size)
 
-{                                                                                                                                      
+{
 
-        int byte, index;
+        int o, j, i;
 
-       
 
-        for (byte = 0; byte < size; byte += 10)                                                                                        
+        o = 0;
 
-        {                                                                                                                              
 
-                printf("%08x: ", byte);                                                                                                
+        if (size <= 0)
 
-                                                                                                                                       
+        {
 
-                for (index = 0; index < 10; index++)                                                                                    
+                printf("\n");
 
-                {                                                                                                                      
+                return;
 
-                        if ((index + byte) >= size)                                                                                    
+        }
 
-                                printf("  ");                                                                                          
+        while (o < size)
 
-                                                                                                                                       
+        {
 
-                        else                                                                                                            
+                j = size - o < 10 ? size - o : 10;
 
-                                printf("%02x", *(b + index + byte));                                                                    
+                printf("%08x: ", o);
 
-                                                                                                                                       
+                for (i = 0; i < 10; i++)
 
-                        if ((index % 2) != 0 && index != 0)                                                                            
+                {
 
-                                printf(" ");                                                                                            
+                        if (i < j)
 
-                }                                                                                                                      
+                                printf("%02x", *(b + o + i));
 
-                                                                                                                                       
+                        else
 
-                for (index = 0; index < 10; index++)                                                                                    
+                                printf("  ");
 
-                {                                                                                                                      
+                        if (i % 2)
 
-                        if ((index + byte) >= size)                                                                                    
+                        {
 
-                                break;                                                                                                  
+                                printf(" ");
 
-                                                                                                                                       
+                        }
 
-                        else if (*(b + index + byte) >= 31 &&                                                                          
+                }
 
-                                 *(b + index + byte) <= 126)                                                                            
+                for (i = 0; i < j; i++)
 
-                                printf("%c", *(b + index + byte));                                                                      
+                {
 
-                                                                                                                                       
+                        int c = *(b + o + i);
 
-                        else                                                                                                            
 
-                                printf(".");                                                                                            
+                        if (c < 32 || c > 132)
 
-                }                                                                                                                      
+                        {
 
-                                                                                                                                       
+                                c = '.';
 
-                if (byte >= size)                                                                                                      
+                        }
 
-                        continue;                                                                                                      
+                        printf("%c", c);
 
-                                                                                                                                       
+                }
 
-                printf("\n");                                                                                                          
+                printf("\n");
 
-        }                                                                                                                              
+                o += 10;
 
-                                                                                                                                       
-
-        if (size <= 0)                                                                                                                  
-
-                printf("\n");                                                                                                          
+        }
 
 }
-
